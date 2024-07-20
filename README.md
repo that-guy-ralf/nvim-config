@@ -13,13 +13,11 @@
 - Colorscheme: Moonlight (currently)
 ----------
 ### *Init*
-"""
 >Requirements:
   config
   lazy plugins
   toggleterm-config
   whichkey
-"""
 ----------
 ### *Plugins*
 >Completions
