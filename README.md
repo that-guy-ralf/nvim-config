@@ -13,23 +13,23 @@
 - Colorscheme: Moonlight (currently)
 ----------
 ### *Init*
->Requirements:
-  config
-  lazy plugins
-  toggleterm-config
-  whichkey
+Requirements:
+- config
+- lazy plugins
+- toggleterm-config
+- whichkey
 ----------
 ### *Plugins*
->Completions
- Git
- LSP
- Mason
- Lualine
- NeoTree
- None-LS
- Treesitter
- Oil
- Telescope (with extentions)
- ToggleTerm
- Whichkey
- Alpha
+- Completions
+- Git
+- LSP
+- Mason
+- Lualine
+- NeoTree
+- None-LS
+- Treesitter
+- Oil
+- Telescope (with extentions)
+- ToggleTerm
+- Whichkey
+- Alpha
