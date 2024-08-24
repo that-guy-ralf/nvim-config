@@ -10,26 +10,14 @@
 - Tabstop set to 2
 - Soft tabstop set to 2 
 - Shift width set to 2
-- Colorscheme: Moonlight (currently)
 ----------
 ### *Init*
-Requirements:
+Files required by init.lua:
 - config
 - lazy plugins
 - toggleterm-config
-- whichkey
+- which-key
 ----------
 ### *Plugins*
-- Completions
-- Git
-- LSP
-- Mason
-- Lualine
-- NeoTree
-- None-LS
-- Treesitter
-- Oil
-- Telescope (with extentions)
-- ToggleTerm
-- Whichkey
-- Alpha
+
+### [https://github.com/that-guy-ralf/nvim-config/tree/master/lua/plugins]
