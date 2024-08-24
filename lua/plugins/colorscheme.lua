@@ -1,6 +1,6 @@
 return {
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-  { "baliestri/aura-theme", name = "aura-theme" },  
+  { "baliestri/aura-theme", name = "aura-theme" },
   { "rose-pine/neovim", name = "rose-pine" },
   { "catppuccin/nvim", name = "catppuccin" },
   { 'sainnhe/everforest', lazy = false, priority = 1000 },
@@ -11,7 +11,19 @@ return {
   { 'olivercederborg/poimandres.nvim',
       lazy = false,
       priority = 1000,
-      config = function() require('poimandres').setup {} end 
+      config = function() require('poimandres').setup {} end
   },
-  { 'shaunsingh/moonlight.nvim' }
+  { 'shaunsingh/moonlight.nvim' },
+  {'rebelot/kanagawa.nvim'},
+  {
+    'ribru17/bamboo.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('bamboo').setup {
+        style = 'vulgaris',
+      }
+      require('bamboo').load()
+    end,
+  },
 }

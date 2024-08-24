@@ -14,6 +14,7 @@ return {
           },
         },
       })
+
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<C-p>", builtin.find_files, {})
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
@@ -22,14 +23,15 @@ return {
       require("telescope").load_extension("ui-select")
     end,
   },
+
   {
-      'LukasPietzschmann/telescope-tabs',
-      config = function()
-        require('telescope').load_extension 'telescope-tabs'
-        require('telescope-tabs').setup {
-          -- Your custom config :^)
-        }
-      end,
-      dependencies = { 'nvim-telescope/telescope.nvim' },
+    'LukasPietzschmann/telescope-tabs',
+    config = function()
+      require('telescope').load_extension 'telescope-tabs'
+      require('telescope-tabs').setup {
+        -- Your custom config :^)
+      }
+    end,
+    dependencies = { 'nvim-telescope/telescope.nvim' },
   }
 }
