@@ -20,4 +20,4 @@ Files required by init.lua:
 ----------
 ### *Plugins*
 
-### [nvim-config/tree/lua/plugins]
+### [nvim plugins](https://github.com/that-guy-ralf/nvim-config/tree/master/lua/plugins)
