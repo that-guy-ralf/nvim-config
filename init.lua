@@ -18,6 +18,5 @@ require("config.config")
 require("lazy").setup("plugins")
 require("toggleterm-config")
 require("whichkey")
-require("evil_lualine")
 
-vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme monokai")

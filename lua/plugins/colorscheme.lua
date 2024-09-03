@@ -26,4 +26,11 @@ return {
       require('bamboo').load()
     end,
   },
+  {
+    "water-sucks/darkrose.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {'NTBBloodbath/doom-one.nvim'},
+  {"DeviusVim/deviuspro.nvim"},
 }
