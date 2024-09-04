@@ -19,4 +19,4 @@ require("lazy").setup("plugins")
 require("toggleterm-config")
 require("whichkey")
 
-vim.cmd("colorscheme monokai")
+vim.cmd("colorscheme kanagawa")
