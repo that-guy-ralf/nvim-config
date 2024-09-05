@@ -19,4 +19,6 @@ require("lazy").setup("plugins")
 require("toggleterm-config")
 require("whichkey")
 
-vim.cmd("colorscheme kanagawa")
+vim.o.termguicolors = true
+vim.o.background = "dark"
+vim.cmd.colorscheme("kanagawa-paper")
