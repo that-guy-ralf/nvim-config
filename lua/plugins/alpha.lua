@@ -1,117 +1,116 @@
 return {
-  "goolord/alpha-nvim",
-  event = "VimEnter",
-  enabled = true,
-  init = false,
-  opts = function()
-    local dashboard = require("alpha.themes.dashboard")
-    -- Define and set highlight groups for each logo line
-    -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo1", { fg = "#311B92" }) -- Indigo
-    -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo2", { fg = "#512DA8" }) -- Deep Purple
-    -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo3", { fg = "#673AB7" }) -- Deep Purple
-    -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo4", { fg = "#9575CD" }) -- Medium Purple
-    -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo5", { fg = "#B39DDB" }) -- Light Purple
-    -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo6", { fg = "#D1C4E9" }) -- Very Light Purple
-    -- vim.api.nvim_set_hl(0, "NeovimDashboardUsername", { fg = "#D1C4E9" }) -- light purple
-    dashboard.section.header.type = "group"
-    dashboard.section.header.val = {
-      {
-        type = "text",
-        val = "   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-        opts = { hl = "NeovimDashboardLogo1", shrink_margin = false, position = "center" },
-      },
-      {
-        type = "text",
-        val = "   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-        opts = { hl = "NeovimDashboardLogo2", shrink_margin = false, position = "center" },
-      },
-      {
-        type = "text",
-        val = "   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-        opts = { hl = "NeovimDashboardLogo3", shrink_margin = false, position = "center" },
-      },
-      {
-        type = "text",
-        val = "   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-        opts = { hl = "NeovimDashboardLogo4", shrink_margin = false, position = "center" },
-      },
-      {
-        type = "text",
-        val = "   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-        opts = { hl = "NeovimDashboardLogo5", shrink_margin = false, position = "center" },
-      },
-      {
-        type = "text",
-        val = "   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-        opts = { hl = "NeovimDashboardLogo6", shrink_margin = false, position = "center" },
-      },
-      {
-        type = "padding",
-        val = 1,
-      },
-      {
-        type = "text",
-        val = "Welcome to Hell :)",
-        opts = { hl = "NeovimDashboardUsername", shrink_margin = false, position = "center" },
-      },
+  'goolord/alpha-nvim',
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
+  config = function()
+    local alpha = require 'alpha'
+    local dashboard = require 'alpha.themes.dashboard'
+
+    _Gopts = {
+      position = 'center',
+      hl = 'Type',
+      wrap = 'overflow',
     }
-    -- stylua: ignore
+
+    -- DASHBOARD HEADER
+
+    local function getGreeting(name)
+      local tableTime = os.date '*t'
+      local datetime = os.date ' %Y-%m-%d-%A   %H:%M:%S '
+      local hour = tableTime.hour
+      local greetingsTable = {
+        [1] = '  Sleep well',
+        [2] = '  Good morning',
+        [3] = '  Good afternoon',
+        [4] = '  Good evening',
+        [5] = '󰖔  Good night',
+      }
+      local greetingIndex = 0
+      if hour == 23 or hour < 7 then
+        greetingIndex = 1
+      elseif hour < 12 then
+        greetingIndex = 2
+      elseif hour >= 12 and hour < 18 then
+        greetingIndex = 3
+      elseif hour >= 18 and hour < 21 then
+        greetingIndex = 4
+      elseif hour >= 21 then
+        greetingIndex = 5
+      end
+      return datetime .. '  ' .. greetingsTable[greetingIndex] .. ', ' .. name
+    end
+
+    local logo = [[
+
+
+ ███▄    █    ▓█████     ▒█████      ██▒   █▓    ██▓    ███▄ ▄███▓
+ ██ ▀█   █    ▓█   ▀    ▒██▒  ██▒   ▓██░   █▒   ▓██▒   ▓██▒▀█▀ ██▒
+▓██  ▀█ ██▒   ▒███      ▒██░  ██▒    ▓██  █▒░   ▒██▒   ▓██    ▓██░
+▓██▒  ▐▌██▒   ▒▓█  ▄    ▒██   ██░     ▒██ █░░   ░██░   ▒██    ▒██ 
+▒██░   ▓██░   ░▒████▒   ░ ████▓▒░      ▒▀█░     ░██░   ▒██▒   ░██▒
+░ ▒░   ▒ ▒    ░░ ▒░ ░   ░ ▒░▒░▒░       ░ ▐░     ░▓     ░ ▒░   ░  ░
+░ ░░   ░ ▒░    ░ ░  ░     ░ ▒ ▒░       ░ ░░      ▒ ░   ░  ░      ░
+   ░   ░ ░       ░      ░ ░ ░ ▒          ░░      ▒ ░   ░      ░   
+         ░       ░  ░       ░ ░           ░      ░            ░   
+                                         ░                        ]]
+
+    local userName = 'Lazy'
+    local greeting = getGreeting(userName)
+    local marginBottom = 0
+    dashboard.section.header.val = vim.split(logo, '\n')
+
+    -- Split logo into lines
+    local logoLines = {}
+    for line in logo:gmatch '[^\r\n]+' do
+      table.insert(logoLines, line)
+    end
+
+    -- Calculate padding for centering the greeting
+    local logoWidth = logo:find '\n' - 1 -- Assuming the logo width is the width of the first line
+    local greetingWidth = #greeting
+    local padding = math.floor((logoWidth - greetingWidth) / 2)
+
+    -- Generate spaces for padding
+    local paddedGreeting = string.rep(' ', padding) .. greeting
+
+    -- Add margin lines below the padded greeting
+    local margin = string.rep('\n', marginBottom)
+
+    -- Concatenate logo, padded greeting, and margin
+    local adjustedLogo = logo .. '\n' .. paddedGreeting .. margin
+
     dashboard.section.buttons.val = {
-      dashboard.button("f", " " .. " Find file",       "<cmd> Telescope find_files <cr>"),
-      dashboard.button("n", " " .. " New file",        "<cmd> ene <BAR> startinsert <cr>"),
-      dashboard.button("r", " " .. " Recent files",    "<cmd> Telescope oldfiles <cr>"),
-      dashboard.button("g", " " .. " Find text",       "<cmd> Telescope live_grep <cr>"),
-      dashboard.button("c", " " .. " Config",          "<cmd> edit ~/.config/nvim/init.lua <cr>"),
-      dashboard.button("s", " " .. " Restore Session", [[<cmd> lua require("persistence").load() <cr>]]),
-    --dashboard.button("x", " " .. " Lazy Extras",     "<cmd> LazyExtras <cr>"),
-      dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
-      dashboard.button("q", " " .. " Quit",            "<cmd> qa <cr>"),
+      dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),
+      dashboard.button('f', '  Find file', ':cd $HOME | silent Telescope find_files hidden=true no_ignore=true <CR>'),
+      dashboard.button('t', '  Find text', ':Telescope live_grep <CR>'),
+      dashboard.button('r', '󰄉  Recent files', ':Telescope oldfiles <CR>'),
+      dashboard.button('u', '󱐥  Update plugins', '<cmd>Lazy update<CR>'),
+      dashboard.button('c', '  Settings', ':e $HOME/.config/nvim/init.lua<CR>'),
+      dashboard.button('p', '  Projects', ':e $HOME/Projects <CR>'),
+      dashboard.button('q', '󰿅  Quit', '<cmd>qa<CR>'),
     }
-    vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#311B92" }) -- Dark Indigo
-    vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#D1C4E9" }) -- Light Purple
-    vim.api.nvim_set_hl(0, "AlphaShortcut", { fg = "#8BC34A" }) -- Greenish
-    vim.api.nvim_set_hl(0, "AlphaFooter", { fg = "#edd691" })
 
-    for _, button in ipairs(dashboard.section.buttons.val) do
-      button.opts.hl = "AlphaButtons"
-      button.opts.hl_shortcut = "AlphaShortcut"
-    end
-    dashboard.section.header.opts.hl = "AlphaHeader"
-    dashboard.section.buttons.opts.hl = "AlphaButtons"
-    dashboard.section.footer.opts.hl = "AlphaFooter"
-    dashboard.opts.layout[1].val = 3
-    return dashboard
-  end,
-  config = function(_, dashboard)
-    -- close Lazy and re-open when the dashboard is ready
-    if vim.o.filetype == "lazy" then
-      vim.cmd.close()
-      vim.api.nvim_create_autocmd("User", {
-        once = true,
-        pattern = "AlphaReady",
-        callback = function()
-          require("lazy").show()
-        end,
-      })
-    end
+    -- local function footer()
+    -- 	return "Footer Text"
+    -- end
 
-    require("alpha").setup(dashboard.opts)
+    -- dashboard.section.footer.val = vim.split('\n\n' .. getGreeting 'Lazy', '\n')
 
-    vim.api.nvim_create_autocmd("User", {
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'LazyVimStarted',
+      desc = 'Add Alpha dashboard footer',
       once = true,
-      pattern = "LazyVimStarted",
       callback = function()
-        local stats = require("lazy").stats()
-        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-        dashboard.section.footer.val = "⚡ Neovim loaded "
-          .. stats.loaded
-          .. "/"
-          .. stats.count
-          .. " plugins in "
-          .. ms
-          .. "ms"
+        local stats = require('lazy').stats()
+        local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
+        dashboard.section.footer.val = { ' ', ' ', ' ', ' Loaded ' .. stats.count .. ' plugins  in ' .. ms .. ' ms ' }
+        dashboard.section.header.opts.hl = 'DashboardFooter'
         pcall(vim.cmd.AlphaRedraw)
       end,
     })
+
+    dashboard.opts.opts.noautocmd = true
+    alpha.setup(dashboard.opts)
   end,
 }
