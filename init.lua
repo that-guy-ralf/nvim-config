@@ -21,4 +21,4 @@ require("whichkey")
 
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.cmd.colorscheme("kanagawa-paper")
+vim.cmd.colorscheme("oldworld")

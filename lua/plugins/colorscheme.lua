@@ -34,4 +34,17 @@ return {
   {'NTBBloodbath/doom-one.nvim'},
   {"DeviusVim/deviuspro.nvim"},
   { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+  {
+  "xero/miasma.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+      vim.cmd("colorscheme miasma")
+    end,
+  },
+  {
+    "dgox16/oldworld.nvim",
+    lazy = false,
+    priority = 1000,
+  },
 }
