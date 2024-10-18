@@ -13,6 +13,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
+vim.opt_local.conceallevel = 2
 
 require("config.config")
 require("lazy").setup("plugins")
@@ -21,8 +22,4 @@ require("whichkey")
 
 vim.o.termguicolors = true
 vim.o.background = "dark"
-<<<<<<< HEAD
-vim.cmd.colorscheme("oldworld")
-=======
 vim.cmd.colorscheme("gruvbox")
->>>>>>> fbb89a308d07b520220b09b09a23b66af9b26012
